@@ -15,10 +15,7 @@ class GponConversorView(APIView):
         if not uploaded_file:
             return Response({"error": "No file provided"}, status=400)
 
-        # Read entire file as text
-        file_content = uploaded_file.read().decode("utf-8", errors="ignore")
-
-        gpon_conversor(task_id, file_content)
+        gpon_conversor(task_id, uploaded_file)
 
         # For now: just return the contents
         return Response({"task_id": task_id})
