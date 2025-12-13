@@ -1,12 +1,10 @@
 from django.urls import path
 from api.views import GponConversorView, ProgressView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    # JWT Authentication
-    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    
     path("gpon-conversor/", GponConversorView.as_view()),
     path("progress/<str:task_id>/", ProgressView.as_view()),
+    
+    path("login/", obtain_auth_token, name="login"),
 ]
