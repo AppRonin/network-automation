@@ -1,9 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:network_automation/services/auth_service.dart';
 import 'package:network_automation/widgets/custom_input.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final userController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool loading = false;
+
+  Future<void> handleLogin() async {
+    setState(() => loading = true);
+
+    final success = await AuthService.login(
+      username: userController.text,
+      password: passwordController.text,
+    );
+
+    setState(() => loading = false);
+
+    if (success) {
+      context.go('/home');
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +76,14 @@ class LoginPage extends StatelessWidget {
               label: "Usuario",
               placeholder: "Digite seu usuário",
               isPassword: false,
+              controller: userController,
             ),
             SizedBox(height: 16),
             CustomInput(
               label: "Password",
               placeholder: "*********",
               isPassword: true,
+              controller: passwordController,
             ),
             SizedBox(height: 24),
 
@@ -59,7 +91,7 @@ class LoginPage extends StatelessWidget {
             MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
-                onTap: () {},
+                onTap: loading ? null : handleLogin,
                 child: Container(
                   width: double.infinity,
                   height: 38,

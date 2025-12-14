@@ -5,12 +5,14 @@ class CustomInput extends StatelessWidget {
   final String label;
   final String placeholder;
   final bool isPassword;
+  final TextEditingController controller;
 
   const CustomInput({
     super.key,
     required this.label,
     required this.placeholder,
     required this.isPassword,
+    required this.controller,
   });
 
   @override
@@ -32,6 +34,7 @@ class CustomInput extends StatelessWidget {
         SizedBox(
           height: 38,
           child: TextField(
+            controller: controller,
             obscureText: isPassword,
             style: GoogleFonts.inter(fontSize: 14),
             decoration: InputDecoration(

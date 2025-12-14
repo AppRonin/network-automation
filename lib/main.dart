@@ -7,6 +7,8 @@ import 'pages/home_page.dart';
 import 'pages/about_page.dart';
 import 'pages/login_page.dart';
 
+import 'package:network_automation/services/auth_service.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,6 +20,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = GoRouter(
       initialLocation: '/home',
+      redirect: (context, state) async {
+        final loggedIn = await AuthService.isLoggedIn();
+        final isLogin = state.uri.path == '/login';
+        final isConversor = state.uri.path == '/conversor';
+
+        // Protect ONLY /conversor
+        if (isConversor && !loggedIn) {
+          return '/login';
+        }
+
+        // Prevent logged user from seeing login page
+        if (loggedIn && isLogin) {
+          return '/home';
+        }
+
+        return null;
+      },
+
       routes: [
         ShellRoute(
           builder: (context, state, child) => AppShell(child: child),

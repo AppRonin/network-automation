@@ -37,6 +37,9 @@ dependencies:
   google_fonts: ^6.3.3
   go_router: ^17.0.1
   popover: ^0.4.0
+  http: ^1.6.0
+  shared_preferences: ^2.5.4
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
