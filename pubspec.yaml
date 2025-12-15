@@ -41,6 +41,8 @@ dependencies:
   shared_preferences: ^2.5.4
   provider: ^6.1.5+1
   animated_text_kit: ^4.3.0
+  file_picker: ^10.3.7
+  percent_indicator: ^4.2.5
 
 dev_dependencies:
   flutter_test:
