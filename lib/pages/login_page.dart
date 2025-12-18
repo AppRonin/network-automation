@@ -15,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final userController = TextEditingController();
   final passwordController = TextEditingController();
   bool loading = false;
+  String? error;
 
   Future<void> handleLogin() async {
     setState(() => loading = true);
@@ -29,9 +30,9 @@ class _LoginPageState extends State<LoginPage> {
     if (success) {
       context.go('/home');
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Invalid credentials')));
+      setState(() {
+        error = "Usuario ou Senha Invalidos";
+      });
     }
   }
 
@@ -42,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.only(bottom: 64),
         child: Container(
           width: 400,
-          height: 320,
+          height: 340,
           padding: EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -66,13 +67,16 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 24),
-              Text(
-                "Login",
-                style: GoogleFonts.inter(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
+              Center(
+                child: Text(
+                  "Login",
+                  style: GoogleFonts.inter(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               SizedBox(height: 24),
@@ -88,6 +92,10 @@ class _LoginPageState extends State<LoginPage> {
                 placeholder: "*********",
                 isPassword: true,
                 controller: passwordController,
+              ),
+              Text(
+                error ?? '',
+                style: GoogleFonts.inter(fontSize: 14, color: Colors.red),
               ),
               SizedBox(height: 24),
 

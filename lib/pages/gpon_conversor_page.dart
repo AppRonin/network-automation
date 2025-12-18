@@ -147,7 +147,10 @@ class _GponConversorPageState extends State<GponConversorPage> {
                   ),
                 ],
               ),
-              Text(error ?? '', style: TextStyle(color: Colors.red)),
+              Text(
+                error ?? '',
+                style: GoogleFonts.inter(fontSize: 14, color: Colors.red),
+              ),
 
               SizedBox(height: 24),
 
