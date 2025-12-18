@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:network_automation/services/gpon_service.dart';
 import 'package:network_automation/widgets/custom_input.dart';
 import 'package:network_automation/widgets/custom_input_file.dart';
 import 'package:file_picker/file_picker.dart';
@@ -15,6 +18,7 @@ class GponConversorPage extends StatefulWidget {
 class _GponConversorPageState extends State<GponConversorPage> {
   final portController = TextEditingController();
   PlatformFile? file;
+  String? error;
 
   Future<void> pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
@@ -36,7 +40,7 @@ class _GponConversorPageState extends State<GponConversorPage> {
         child: Container(
           width: 500,
           height: 325,
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.only(left: 24, right: 24, top: 24),
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.grey.shade300),
@@ -96,7 +100,28 @@ class _GponConversorPageState extends State<GponConversorPage> {
                         ? SystemMouseCursors.forbidden
                         : SystemMouseCursors.click,
                     child: GestureDetector(
-                      onTap: isDisabled ? null : () {},
+                      onTap: isDisabled
+                          ? null
+                          : () async {
+                              final response = await GponService.convert(
+                                file: file!,
+                                port: portController.text.trim(),
+                              );
+
+                              final bodyString = await response.stream
+                                  .bytesToString();
+                              final data = jsonDecode(bodyString);
+
+                              if (response.statusCode == 200) {
+                                setState(() {
+                                  error = null;
+                                });
+                              } else {
+                                setState(() {
+                                  error = data['error'];
+                                });
+                              }
+                            },
                       child: Opacity(
                         opacity: isDisabled ? 0.5 : 1,
                         child: Container(
@@ -122,8 +147,10 @@ class _GponConversorPageState extends State<GponConversorPage> {
                   ),
                 ],
               ),
+              Text(error ?? '', style: TextStyle(color: Colors.red)),
 
-              SizedBox(height: 32),
+              SizedBox(height: 24),
+
               SimpleProgressBar(progress: 0.65),
             ],
           ),

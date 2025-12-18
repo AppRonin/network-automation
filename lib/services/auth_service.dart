@@ -10,6 +10,19 @@ class AuthService {
     return prefs.getString('auth_token') != null;
   }
 
+  static Future<String?> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('auth_token');
+  }
+
+  static Future<Map<String, String>> authHeaders() async {
+    final token = await getToken();
+
+    if (token == null) return {};
+
+    return {'Authorization': 'Token $token'};
+  }
+
   static Future<bool> login({
     required String username,
     required String password,
