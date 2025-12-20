@@ -129,17 +129,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Allow Flutter web app (adjust port if different)
+# flutter run -d web-server --web-port=5173
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://localhost:3000",
+    "http://localhost:5173", 
+    "http://127.0.0.1:5173",
 ]
-
-CORS_ALLOW_HEADERS = [
-    "authorization",
-    "content-type",
-]
-
-CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
 	# Token Authentication
