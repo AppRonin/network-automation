@@ -44,49 +44,58 @@ class DesktopNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 64, vertical: 21),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "IPS",
-            style: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700),
-          ),
-
-          Row(
+      child: Center(
+        child: SizedBox(
+          width: 1200,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Navlink(
-                name: "Home",
-                index: 1,
-                activeIndex: activeIndex,
-                onSelection: onSelection,
+              Text(
+                "IPS",
+                style: GoogleFonts.inter(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
 
-              Navdrop(
-                name: "Automações",
-                index: 2,
-                activeIndex: activeIndex,
-                onSelection: onSelection,
+              Row(
+                children: [
+                  Navlink(
+                    name: "Home",
+                    index: 1,
+                    activeIndex: activeIndex,
+                    onSelection: onSelection,
+                  ),
+
+                  Navdrop(
+                    name: "Automações",
+                    index: 2,
+                    activeIndex: activeIndex,
+                    onSelection: onSelection,
+                  ),
+
+                  Navlink(
+                    name: "Sobre",
+                    index: 3,
+                    activeIndex: activeIndex,
+                    onSelection: onSelection,
+                  ),
+                ],
               ),
 
-              Navlink(
-                name: "Sobre",
-                index: 3,
+              LoginButton(
+                index: 4,
                 activeIndex: activeIndex,
                 onSelection: onSelection,
               ),
             ],
           ),
-
-          LoginButton(
-            index: 4,
-            activeIndex: activeIndex,
-            onSelection: onSelection,
-          ),
-        ],
+        ),
       ),
     );
   }
