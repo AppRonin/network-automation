@@ -1,5 +1,7 @@
+import ast
 import uuid
 import re
+import redis
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,6 +12,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 
+r = redis.Redis()
 
 class GponConversorView(APIView):
     parser_classes = (MultiPartParser, FormParser)
@@ -30,14 +33,18 @@ class GponConversorView(APIView):
         # Validate port
         if not port or not re.match(self.PORT_PATTERN, port):
             return Response({"error": "Invalid port format"}, status=400)
-        
-        print("PORT:", port)
 
-        #gpon_conversor(task_id, uploaded_file)
+        gpon_conversor(task_id, uploaded_file, port)
 
         # For now: just return the contents
         return Response({"task_id": task_id})
 
 class ProgressView(APIView):
     def get(self, request, task_id):
-        pass
+        progress = r.get(f"progress:{task_id}")
+        result = r.get(f"result:{task_id}")
+
+        return Response({
+            "progress": int(progress) if progress else 0,
+            "result": ast.literal_eval(result.decode()) if result else None
+        })
