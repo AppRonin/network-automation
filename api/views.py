@@ -11,6 +11,7 @@ from django.urls import path
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
+from django.core.files.storage import default_storage
 
 r = redis.Redis()
 
@@ -25,16 +26,18 @@ class GponConversorView(APIView):
 
         if not uploaded_file:
             return Response({"error": "No file provided"}, status=400)
-        
+
         # Allow only .txt
         if not uploaded_file.name.lower().endswith(".txt"):
             return Response({"error": "Only .txt files are allowed"}, status=400)
-        
+
         # Validate port
         if not port or not re.match(self.PORT_PATTERN, port):
             return Response({"error": "Invalid port format"}, status=400)
 
-        gpon_conversor(task_id, uploaded_file, port)
+        file_path = default_storage.save(f"uploads/{task_id}.txt", uploaded_file)
+
+        gpon_conversor.send(task_id, file_path, port)
 
         # For now: just return the contents
         return Response({"task_id": task_id})
