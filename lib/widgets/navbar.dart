@@ -45,7 +45,8 @@ class DesktopNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 64, vertical: 21),
+      height: 80,
+      padding: EdgeInsets.symmetric(horizontal: 64),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
@@ -107,7 +108,8 @@ class MobileNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 21),
+      height: 80,
+      padding: EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
       ),
