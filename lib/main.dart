@@ -8,8 +8,10 @@ import 'pages/about_page.dart';
 import 'pages/login_page.dart';
 
 import 'package:network_automation/services/auth_service.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
