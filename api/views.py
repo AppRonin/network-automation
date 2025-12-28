@@ -9,7 +9,6 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from tasks.workers import gpon_conversor
 from django.urls import path
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from django.core.files.storage import default_storage
 
@@ -17,6 +16,7 @@ r = redis.Redis()
 
 class GponConversorView(APIView):
     parser_classes = (MultiPartParser, FormParser)
+    permission_classes = [IsAuthenticated]
     PORT_PATTERN = r"^\d+\/\d+\/\d+$"
 
     def post(self, request):
@@ -43,6 +43,8 @@ class GponConversorView(APIView):
         return Response({"task_id": task_id})
 
 class ProgressView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, task_id):
         progress = r.get(f"progress:{task_id}")
         result = r.get(f"result:{task_id}")
