@@ -89,7 +89,9 @@ class _GponConversorPageState extends State<GponConversorPage> {
 
   Future<Map<String, dynamic>> getProgress(String taskID) async {
     final url = Uri.parse('$baseUrl/progress/$taskID');
-    final response = await http.get(url);
+    final headers = await AuthService.authHeaders();
+
+    final response = await http.get(url, headers: headers);
 
     if (response.statusCode == 200) {
       return json.decode(response.body);
