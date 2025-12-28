@@ -17,7 +17,9 @@ r = redis.Redis()
 class GponConversorView(APIView):
     parser_classes = (MultiPartParser, FormParser)
     permission_classes = [IsAuthenticated]
-    PORT_PATTERN = r"^\d+\/\d+\/\d+$"
+
+    PORT_PATTERN = r"^\d+\/\d+\/\d+$" # 1/1/1
+    MAX_FILE_SIZE = 2 * 1024 * 1024  # 2 MB
 
     def post(self, request):
         task_id = str(uuid.uuid4())
@@ -26,6 +28,9 @@ class GponConversorView(APIView):
 
         if not uploaded_file:
             return Response({"error": "No file provided"}, status=400)
+        
+        if uploaded_file.size > self.MAX_FILE_SIZE:
+            return Response({"error": "File too large. Max size is 2MB"}, status=400)
 
         # Allow only .txt
         if not uploaded_file.name.lower().endswith(".txt"):
