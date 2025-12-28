@@ -29,11 +29,26 @@ class _GponConversorPageState extends State<GponConversorPage> {
   String? error;
 
   Future<void> pickFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    const int maxFileSize = 2 * 1024 * 1024; // 2 MB
+
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      withData: true,
+    );
 
     if (result != null) {
+      final pickedFile = result.files.first;
+
+      if (pickedFile.size > maxFileSize) {
+        setState(() {
+          file = null;
+          error = "File size must be less than 2MB";
+        });
+        return;
+      }
+
       setState(() {
-        file = result.files.first;
+        file = pickedFile;
+        error = null;
       });
     }
   }
