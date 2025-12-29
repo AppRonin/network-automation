@@ -28,7 +28,7 @@ cd network-automation
 ```bash
 cd frontend
 flutter pub get
-flutter run
+flutter run -d web-server --web-port=5173
 ```
 
 ### 3️⃣ Backend Setup
