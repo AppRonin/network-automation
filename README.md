@@ -4,15 +4,11 @@
 
 A responsive and scalable **Flutter Web frontend** designed to integrate with backend automation services used in telecom network operations.
 
----
-
 ## 📱 Screenshots
 
 <div align="center">
   <img src="lib/images/screenshot.png" width="80%" />
 </div>
-
----
 
 ## ✨ Features
 
@@ -21,8 +17,6 @@ A responsive and scalable **Flutter Web frontend** designed to integrate with ba
 - 📁 **File upload & validation workflows**
 - 🧭 **Clean navigation system** for operational tools
 - 🔌 **API integration** with backend automation services
-
----
 
 ## 📂 Project Structure
 
@@ -35,8 +29,6 @@ lib/
 ├── app_shell.dart # Root application layout
 └── main.dart      # App entry point
 ```
-
----
 
 ## 🚀 Getting Started
 
@@ -59,14 +51,10 @@ flutter pub get
 flutter run -d web-server --web-port=5173
 ```
 
----
-
 ## 🛠 Tech Stack
 
 - **Flutter (Web)**
 - **Dart**
-
----
 
 ## ✒ Author
 
