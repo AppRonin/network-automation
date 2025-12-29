@@ -6,7 +6,7 @@
 
 <div align="center">
   <p float="left">
-    <img src="lib/images/screenshot_1.png" width="80%" />
+    <img src="lib/images/screenshot.png" width="80%" />
   </p>
 </div>
 
@@ -31,8 +31,6 @@ flutter pub get
 flutter run -d web-server --web-port=5173
 ```
 
-## 👤 Author
+## ✒ Author
 
-### AppRonin
-
-Full Stack Developer — Network Automation Front
+**AppRonin**
