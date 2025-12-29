@@ -6,6 +6,14 @@ A responsive and scalable **Flutter Web frontend** designed to integrate with ba
 
 ---
 
+## 📱 Screenshots
+
+<div align="center">
+  <img src="lib/images/screenshot.png" width="80%" />
+</div>
+
+---
+
 ## ✨ Features
 
 - ⚡ **Fast & responsive UI** built with Flutter Web
@@ -13,14 +21,6 @@ A responsive and scalable **Flutter Web frontend** designed to integrate with ba
 - 📁 **File upload & validation workflows**
 - 🧭 **Clean navigation system** for operational tools
 - 🔌 **API integration** with backend automation services
-
----
-
-## 📱 Screenshots
-
-<div align="center">
-  <img src="lib/images/screenshot.png" width="80%" />
-</div>
 
 ---
 
