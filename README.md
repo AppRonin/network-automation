@@ -4,32 +4,7 @@
 
 A robust and scalable **Django REST Framework API** designed to power telecom network automation workflows, asynchronous processing, and secure integrations with frontend clients such as **Flutter Web**.
 
-## ✨ Features
-
-- 🚀 **RESTful API** built with Django REST Framework
-- 🔐 **Token-based authentication** (Opaque Token)
-- 📁 **File upload & validation** workflows
-- 🧵 **Asynchronous background tasks** using Dramatiq
-- ⚡ **Redis** as message broker
-- 🗄 **PostgreSQL** for reliable data persistence
-
-## 📂 Project Structure
-
-```text
-NETWORK_AUTOMATION/
-├── api/                    # Main Django app (REST API)
-├── network_automation/     # Project configuration
-├── tasks/                  # Background task definitions
-├── utils/                  # Shared utilities & helpers
-├── media/                  # Uploaded files
-├── .env                    # Environment variables
-├── .env_sample             # Environment example template
-├── requirements.txt        # Python dependencies
-└── manage.py
-
-```
-
-## 🚀 Getting Started
+## Getting Started
 
 ### 1️⃣ Clone the repo
 
@@ -56,16 +31,6 @@ python manage.py runserver
 dramatiq tasks.workers
 ```
 
-## 🛠 Tech Stack
+## Author
 
-- **Python**
-- **Django**
-- **Django REST Framework**
-- **Dramatiq**
-- **Redis**
-- **PostgreSQL**
-
-## ✒ Author
-
-**AppRonin**  
-GitHub: https://github.com/AppRonin
+Developed by **AppRonin**, Full-Stack Developer.
