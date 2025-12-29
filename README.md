@@ -1,6 +1,6 @@
 # 🦋⚙️ Network Automation
 
-> **telecom network automation platform**  
+> **Telecom network automation platform**  
 > Modern **Flutter Web frontend** and a robust **Django REST backend**, designed for enterprise-grade telecom workflows.
 
 The project is split into two independent but connected applications:
