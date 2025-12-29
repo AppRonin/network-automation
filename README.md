@@ -1,36 +1,14 @@
-# 🌐 Network Automation Front
+# 🦋 Network Automation Front
 
 > **Modern Flutter Web interface for enterprise-grade telecom network automation**
 
 A responsive and scalable **Flutter Web frontend** designed to integrate with backend automation services used in telecom network operations.
 
-## 📱 Screenshots
-
 <div align="center">
   <img src="lib/images/screenshot.png" width="80%" />
 </div>
 
-## ✨ Features
-
-- ⚡ **Fast & responsive UI** built with Flutter Web
-- 🔐 **Authentication-ready** architecture
-- 📁 **File upload & validation workflows**
-- 🧭 **Clean navigation system** for operational tools
-- 🔌 **API integration** with backend automation services
-
-## 📂 Project Structure
-
-```text
-lib/
-├── services/      # API & authentication services
-├── widgets/       # Reusable UI components
-├── pages/         # Application views
-├── images/        # UI assets & screenshots
-├── app_shell.dart # Root application layout
-└── main.dart      # App entry point
-```
-
-## 🚀 Getting Started
+## Getting Started
 
 ### 1️⃣ Clone the repository
 
@@ -51,12 +29,6 @@ flutter pub get
 flutter run -d web-server --web-port=5173
 ```
 
-## 🛠 Tech Stack
+## Author
 
-- **Flutter (Web)**
-- **Dart**
-
-## ✒ Author
-
-**AppRonin**  
-GitHub: https://github.com/AppRonin
+Developed by **AppRonin**, Full-Stack Developer.
