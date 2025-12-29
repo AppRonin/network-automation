@@ -1,4 +1,4 @@
-# ⚙️ Network Automation API
+# ⚙️ Network Automation Backend
 
 > **Enterprise-grade backend API for telecom network automation**
 
@@ -9,20 +9,21 @@ A robust and scalable **Django REST Framework API** designed to power telecom ne
 ### 1️⃣ Clone the repo
 
 ```bash
-git clone https://github.com/AppRonin/network-automation-back.git
-cd network-automation-back
+git clone https://github.com/AppRonin/network-automation.git
+cd network-automation
 ```
 
-### 2️⃣ Run Redis
+### 2️⃣ Run the API server
+
+```bash
+cd backend
+python manage.py runserver
+```
+
+### 3️ Run Redis
 
 ```bash
 sudo service redis-server start
-```
-
-### 3️⃣ Run the API server
-
-```bash
-python manage.py runserver
 ```
 
 ### 4️⃣ Start Dramatiq worker

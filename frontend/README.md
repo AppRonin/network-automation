@@ -20,6 +20,7 @@ cd network-automation-front
 ### 2️⃣ Install dependencies
 
 ```bash
+cd frontend
 flutter pub get
 ```
 
