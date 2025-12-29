@@ -22,12 +22,11 @@ NETWORK_AUTOMATION/
 ├── tasks/                  # Background task definitions
 ├── utils/                  # Shared utilities & helpers
 ├── media/                  # Uploaded files
-├── env/                    # Virtual environment (optional)
 ├── .env                    # Environment variables
 ├── .env_sample             # Environment example template
 ├── requirements.txt        # Python dependencies
-├── manage.py
-└── README.md
+└── manage.py
+
 ```
 
 ## 🚀 Getting Started
